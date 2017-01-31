@@ -1,14 +1,18 @@
 angular.module('FoodTruckApp.controllers', ['ngRoute', 'ui.router','ngMap'])
-.controller('HomeCtrl', function($scope, NgMap){
+.controller('HomeCtrl', function($scope, NgMap, $http){
   $scope.msg = 'hello'
   console.log('dd');
-  NgMap.getMap().then(function(map) {
-    console.log('dd');
-    console.log(map.getCenter());
-    console.log('markers', map.markers);
-    console.log('shapes', map.shapes);
-  });
+  // NgMap.getMap().then(function(map) {
+  //   console.log('dd');
+  //   console.log(map.getCenter());
+  //   console.log('markers', map.markers);
+  //   console.log('shapes', map.shapes);
+  // });
 
+  $http.get('/api/initialize').success(function(data){
+    console.log(data)
+    $scope.data = data.body
+  })
 })
 .config(['$httpProvider', function ($httpProvider) {
 		$httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
@@ -22,7 +26,7 @@ angular.module('FoodTruckApp.controllers', ['ngRoute', 'ui.router','ngMap'])
   $stateProvider
     .state('home', {
       url: "/",
-      templateUrl: "../partial/home.html",
+      templateUrl: "../partials/home.html",
       controller: "HomeCtrl"
   	});
 });

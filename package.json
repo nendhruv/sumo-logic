@@ -1,0 +1,24 @@
+{
+  "name": "sf-food-truck",
+  "version": "1.0.0",
+  "description": "Food trucks available in san francisco",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nendhruv/SF-FOOD-TRUCK.git"
+  },
+  "author": "nendhruv",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nendhruv/SF-FOOD-TRUCK/issues"
+  },
+  "homepage": "https://github.com/nendhruv/SF-FOOD-TRUCK#readme",
+  "dependencies": {
+    "ejs": "^2.5.5",
+    "express": "^4.14.1",
+    "unirest": "^0.5.1"
+  }
+}
