@@ -1,8 +1,32 @@
 <div class="row">
-  <div class="angular-google-map-container col-sm-10 col-sm-offset-1">
+  <div class="col-sm-4">
+    <form class="form">
+        <input class="form-control" g-places-autocomplete ng-model="place"/>
+    </form>
+    <ul>
+      <li ng-repeat="place in data track by $index">
+        <p ng-click="truckDetails(place)">
+          <h4>
+            {{place.applicant}}
+          </h4>
+        </p>
+      </li>
+    </ul>
+  </div>
+  <div class="angular-google-map-container col-sm-8">
     <ng-map zoom="11" center="[37.7962154965941,-122.403754558245]">
       <!-- <marker position="[40.71, -74.21]" title="hello"></marker> -->
-      <marker ng-repeat="pos in data" position="[{{pos.latitude}},{{pos.longitude}}]"></marker>
+      <marker ng-repeat="pos in data" position="[{{pos.latitude}},{{pos.longitude}}]" ng-click="new(pos)"></marker>
     </ng-map>
+  </div>
+
+  <div>
+    Applicant: {{truck.applicant}}
+    Addresss: {{truck.address}}
+    Block: {{truck.block}}
+    Block Lot: {{truck.blocklot}}
+    Time: {{truck.dayshours}}
+    Location Description: {{truck.locationdescreption}}
+    Schedule: {{truck.schedule}}
   </div>
 </div>

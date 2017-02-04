@@ -1,18 +1,42 @@
-angular.module('FoodTruckApp.controllers', ['ngRoute', 'ui.router','ngMap'])
+angular.module('FoodTruckApp.controllers', ['ngRoute', 'ui.router','ngMap', 'google.places'])
 .controller('HomeCtrl', function($scope, NgMap, $http){
   $scope.msg = 'hello'
-  console.log('dd');
+  $scope.place = '';
+  console.log($scope.place);
+
+  $scope.truckDetails = function(truck){
+    $scope.truck = truck
+  }
+
+  $scope.$watch('place', function(){
+    if(typeof($scope.place) === "object"){
+      $scope.userLat = $scope.place.geometry.location.lat();
+      // console.log($scope.place.geometry.location.lat())
+      var kmInLongitudeDegree = 111.320 * Math.cos( $scope.userLat / 180.0 * Math.PI)
+      // var deltaLong = 2 / kmInLongitudeDegree; // 2 is radius in km
+      var deltaLat = 2 / 111.1; // 2 is radius in km
+
+      var minLat = $scope.userLat - deltaLat;
+      var maxLat = $scope.userLat + deltaLat;
+      // minLong = long - deltaLong;
+      // maxLong = long + deltaLong;
+
+      $http.get('/api/getfoodtrucks?minlat='+minLat+'&maxlat='+maxLat+'&type=Truck').success(function(data){
+        console.log(data)
+        $scope.data = data.data
+      })
+
+    }
+  })
   // NgMap.getMap().then(function(map) {
   //   console.log('dd');
   //   console.log(map.getCenter());
   //   console.log('markers', map.markers);
   //   console.log('shapes', map.shapes);
   // });
-
-  $http.get('/api/initialize').success(function(data){
-    console.log(data)
-    $scope.data = data.body
-  })
+  $scope.pos = function(h){
+    console.log(h);
+  }
 })
 .config(['$httpProvider', function ($httpProvider) {
 		$httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';

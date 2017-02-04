@@ -16,7 +16,7 @@ app.get('/', function(req, res){
 });
 
 
-app.get('/api/initialize', trucks.initialize)
+app.get('/api/getfoodtrucks', trucks.findInLocation)
 
 
 server.listen(app.get('port'), function () {
