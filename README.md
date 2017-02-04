@@ -8,6 +8,13 @@ Search for food trucks in your area. Type in the location you want to find the t
 
 2) ngmaps for google maps with angular (https://ngmap.github.io/#/)
 
+### How to run
+1) npm install
+
+2) bower install
+
+3) Open app on http://localhost:3000
+
 ### Things that can be added
 1) Directions to your favourite food truck.
 
