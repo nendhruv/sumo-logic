@@ -1,29 +1,54 @@
 angular.module('FoodTruckApp.controllers', ['ngRoute', 'ui.router','ngMap', 'google.places'])
 .controller('HomeCtrl', function($scope, NgMap, $http){
-  $scope.msg = 'hello'
+  $scope.loading = false;
   $scope.place = '';
-  console.log($scope.place);
-
+  // console.log($scope.place);
+  $scope.defaultLat = 37.7749;
+  $scope.defaultLong = -122.4194;
   $scope.truckDetails = function(truck){
+    // console.log(truck)
     $scope.truck = truck
+  }
+
+  $scope.truckList = function(){
+    $scope.truck = false;
   }
 
   $scope.$watch('place', function(){
     if(typeof($scope.place) === "object"){
       $scope.userLat = $scope.place.geometry.location.lat();
-      // console.log($scope.place.geometry.location.lat())
+      // console.log($scope.place.geometry.location)
+      $scope.userLong = $scope.place.geometry.location.lng();
       var kmInLongitudeDegree = 111.320 * Math.cos( $scope.userLat / 180.0 * Math.PI)
-      // var deltaLong = 2 / kmInLongitudeDegree; // 2 is radius in km
+      var deltaLong = 2 / kmInLongitudeDegree; // 2 is radius in km
       var deltaLat = 2 / 111.1; // 2 is radius in km
 
       var minLat = $scope.userLat - deltaLat;
       var maxLat = $scope.userLat + deltaLat;
-      // minLong = long - deltaLong;
-      // maxLong = long + deltaLong;
+      var minLong = $scope.userLong - deltaLong;
+      var maxLong = $scope.userLong + deltaLong;
+      $scope.loading = true;
+      $http.get('/api/getfoodtrucks?minlat='+minLat+'&maxlat='+maxLat+'&minlong='+minLong+'&maxlong='+maxLong+'&type=Truck').success(function(data){
+        // console.log(data)
+        if(data.err){
+          $scope.defaultLat = 37.7749;
+          $scope.defaultLong = -122.4194;
+          $scope.msg = 'Oops there is no data to display'
+          $scope.data = null
 
-      $http.get('/api/getfoodtrucks?minlat='+minLat+'&maxlat='+maxLat+'&type=Truck').success(function(data){
-        console.log(data)
-        $scope.data = data.data
+        }
+        else if(data.data.length === 0){
+          $scope.defaultLat = 37.7749;
+          $scope.defaultLong = -122.4194;
+          $scope.msg = 'Oops there is no data to display'
+          $scope.data = null
+        }
+        else{
+          $scope.data = data.data
+          $scope.defaultLat = $scope.userLat
+          $scope.defaultLong = $scope.userLong
+        }
+        $scope.loading = false;
       })
 
     }
@@ -35,7 +60,7 @@ angular.module('FoodTruckApp.controllers', ['ngRoute', 'ui.router','ngMap', 'goo
   //   console.log('shapes', map.shapes);
   // });
   $scope.pos = function(h){
-    console.log(h);
+    // console.log(h);
   }
 })
 .config(['$httpProvider', function ($httpProvider) {
