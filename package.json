@@ -1,5 +1,5 @@
 {
-  "name": "sf-food-truck",
+  "name": "sumo-logic-task",
   "version": "1.0.0",
   "description": "Food trucks available in san francisco",
   "main": "app.js",
@@ -10,18 +10,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nendhruv/SF-FOOD-TRUCK.git"
+    "url": "git+https://github.com/nendhruv/sumo-logic-task.git"
   },
   "author": "nendhruv",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nendhruv/SF-FOOD-TRUCK/issues"
+    "url": "https://github.com/nendhruv/sumo-logic-task/issues"
   },
-  "homepage": "https://github.com/nendhruv/SF-FOOD-TRUCK#readme",
+  "homepage": "https://github.com/nendhruv/sumo-logic-task#readme",
   "dependencies": {
     "bower": "^1.8.0",
     "ejs": "^2.5.5",
-    "express": "^4.14.1",
-    "unirest": "^0.5.1"
+    "express": "^4.14.1"
   }
 }

@@ -1,123 +1,92 @@
-.angular-google-map-container {
-  height: 400px;
+body{
+  background-color: #fff;
+  font-family: arial;
 }
 
-.left-nav{
-  background: #fff;
-  min-height: 100vh;
-  z-index: 1;
-  margin-top: -11%;
-  box-shadow: 1px 0px 10px rgba(0,0,0,0.50);
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-    ng-cloak {
+        display: none !important;
 }
 
-.label-div{
-  background: blue;
-  height: 170px;
-}
-
-.back i:hover{
-  cursor: pointer;
-}
-
-.back i {
-  margin: 3% 0% 0 6%;
-}
-
-.back{
-  background: blue;
-  color: #fff;
-  margin-left: 0%;
-}
-
-.left-nav ul li{
-  list-style-type: none;
-  border-bottom: 1px solid #ddd;
-  padding: 2%;
-}
-
-.left-nav ul li:hover{
+header{
   background: #efefef;
-  cursor: pointer;
-}
-
-.left-nav ul{
-  padding-left: 0;
-}
-
-.col-sm-12{
-  padding-left: 0;
-  padding-right: 0;
-}
-
-.row{
-  margin-left: 0;
-  margin-right: 0;
-}
-
-.search-form{
-   width: 30%;
-   position: fixed;
-   /*margin-left: 1%;*/
-   z-index: 1;
-   height: 100%;
-   overflow: auto;
-   /*top: 9%;*/
-}
-
-.loader span{
-  left: 47%;
-  position: relative;
-  top: 50%;
-}
-
-.loader{
-  position: absolute;
-  top: 0;
-  background: rgba(255,255,255,0.9);
-  /*background: #000;*/
-  height: 100%;
-  width: 100%;
-  z-index: 10;
-  /*color: #fff;*/
-  left: 0;
-}
-
-.label-heading{
-  background: blue;
-  height: 80px;
-  padding: 6%;
-  color: #fff;
-  font-size: 1.5em;
+  height: 50px;
   font-weight: bold;
-}
-
-.place-details{
-  padding: 2.5%;
+  box-shadow: 0px 1px 5px rgba(0,0,0,0.225);
   font-size: 1.1em;
 }
 
-.place-details span{
+.items{
+	background: #fff;
+	padding: 1%;
+}
+
+i.close:hover{
+	cursor: pointer;
+}
+
+
+.message{
+	margin-top: 20%;
+	text-align: center;
+}
+
+.item{
+	padding: 2% 0% 1% 2%;
+}
+
+.item:hover{
+	cursor:pointer;
+	background: #29a1e6;
+	color: #fff;
+}
+
+.logo{
+  margin-top: 1%;
+}
+
+.dialog{
+    margin-top: 6%;
+    background: #efefef;
+    padding: 4%;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.25);
+}
+
+.dialog h2{
+	color: #29a1e6;
+}
+
+autocomplete input{
+	height: 35px;
+	width: 100%;
+}
+
+.submit-btn{
+	background: #29a1e6;
+    color: #fff;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+label {
+  cursor: pointer;
+}
+input[type="checkbox"] + label:before {
+  border: 1px solid #29a1e6;
+  content: "\00a0";
+  display: inline-block;
+  height: 16px;
+  margin: 0 .25em 0 0;
+  padding: 0;
+  vertical-align: top;
+  width: 16px;
+}
+input[type="checkbox"]:checked + label:before {
+  background: #29a1e6;
+  color: #fff;
+  content: "\2713";
+  text-align: center;
+}
+input[type="checkbox"]:checked + label:after {
   font-weight: bold;
-}
-
-.truck-detail{
-  position: fixed;
-  width: 30%;
-  margin: 0;
-}
-
-.search-form .map-input{
-  height: 40px;
-  z-index: 3;
-  display: inline;
-  margin-left: 2%;
-  position: fixed;
-  top: 7%;
-  width: 25%;
-  border-radius: 0;
-  box-shadow: 0px 2px 2px rgba(0,0,0,0.20);
-}
-
-.app-map{
-  height: 100vh;
 }
