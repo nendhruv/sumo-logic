@@ -1,5 +1,5 @@
 ## How to run
 
 1) npm install
-
-2) http://localhost:3000/#/
+2) node app.js
+3) http://localhost:3000/#/
